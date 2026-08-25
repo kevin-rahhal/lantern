@@ -1,0 +1,36 @@
+name: Bug report
+description: Tell us about something that is not working.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Lantern. Never include passwords, private keys, or sensitive network details.
+  - type: input
+    id: version
+    attributes:
+      label: Lantern version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Operating system
+      options: [Windows, macOS, Linux]
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the steps to reproduce, expected result, and actual result.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Redact usernames, IP/MAC addresses, hostnames, and secrets before pasting.
+      render: shell
+

@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: https://github.com/kevin-rahhal/lantern/security/advisories/new
+    about: Report vulnerabilities privately. Do not open a public issue.
+

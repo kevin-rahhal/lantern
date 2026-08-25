@@ -1,0 +1,74 @@
+name: Publish installers
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows-latest
+            args: --bundles nsis
+          - platform: macos-latest
+            args: --target aarch64-apple-darwin --bundles dmg
+          - platform: macos-latest
+            args: --target x86_64-apple-darwin --bundles dmg
+          - platform: ubuntu-22.04
+            args: --bundles appimage,deb
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Linux desktop dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf xdg-utils
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+      - run: npm ci
+      - run: npm run check:version
+      - uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: Lantern v__VERSION__
+          releaseBody: |
+            Download the installer for your operating system below.
+
+            This first community release is not yet code-signed. Windows SmartScreen or macOS Gatekeeper may ask you to confirm that you trust the app. Checksums are included with the release.
+          releaseDraft: false
+          prerelease: false
+          includeUpdaterJson: false
+          args: ${{ matrix.args }}
+
+  checksums:
+    needs: publish
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Download release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release download "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" --dir artifacts
+      - name: Create SHA-256 checksums
+        working-directory: artifacts
+        run: sha256sum * > ../SHA256SUMS.txt
+      - name: Upload checksums
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload "${GITHUB_REF_NAME}" SHA256SUMS.txt --repo "${GITHUB_REPOSITORY}" --clobber

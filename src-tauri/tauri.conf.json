@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Lantern",
+  "version": "0.1.0",
+  "identifier": "io.github.kevin-rahhal.lantern",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Lantern",
+        "width": 1180,
+        "height": 760,
+        "minWidth": 780,
+        "minHeight": 600,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "publisher": "Kevin Hanna Rahhal",
+    "homepage": "https://github.com/kevin-rahhal/lantern",
+    "licenseFile": "../LICENSE",
+    "resources": {
+      "../THIRD_PARTY_NOTICES.md": "THIRD_PARTY_NOTICES.md"
+    },
+    "copyright": "Copyright © 2026 Kevin Hanna Rahhal and Lantern contributors",
+    "license": "MIT",
+    "licenseFile": "../LICENSE",
+    "resources": {
+      "../THIRD_PARTY_NOTICES.md": "THIRD_PARTY_NOTICES.md"
+    },
+    "category": "DeveloperTool",
+    "shortDescription": "Discover LAN devices and connect over SSH",
+    "longDescription": "Lantern finds devices on your local network, identifies them using multiple best-effort signals, and opens secure SSH sessions in a compact tabbed terminal.",
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "installerIcon": "icons/icon.ico"
+      }
+    }
+  }
+}
