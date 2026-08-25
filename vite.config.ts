@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
 
+const platform = process.env.TAURI_ENV_PLATFORM;
+
 export default defineConfig({
   clearScreen: false,
   server: {
@@ -11,8 +13,8 @@ export default defineConfig({
   },
   envPrefix: ["VITE_", "TAURI_ENV_*"],
   build: {
-    target: process.env.TAURI_ENV_PLATFORM === "windows" ? "chrome105" : "safari13",
-    minify: process.env.TAURI_ENV_DEBUG ? false : "esbuild",
+    target: platform === "windows" ? "chrome105" : platform === "macos" ? "safari14" : "es2020",
+    minify: process.env.TAURI_ENV_DEBUG ? false : "oxc",
     sourcemap: Boolean(process.env.TAURI_ENV_DEBUG),
   },
 });

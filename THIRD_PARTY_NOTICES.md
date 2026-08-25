@@ -15,6 +15,7 @@ Lantern is built with open-source software. The exact versions distributed in a 
 | [macaddr-ouidb](https://crates.io/crates/macaddr-ouidb) | Offline MAC manufacturer lookup | Apache-2.0 |
 | [TypeScript](https://github.com/microsoft/TypeScript) | Frontend language tooling | Apache-2.0 |
 | [Vite](https://github.com/vitejs/vite) | Frontend build tooling | MIT |
+| [esbuild](https://github.com/evanw/esbuild) | Cross-platform JavaScript compatibility transform | MIT |
 
 The MAC manufacturer database packaged by `macaddr-ouidb` states that its source is Nmap's `nmap-mac-prefixes`, which in turn integrates the IEEE Registration Authority public assignment data. Credit belongs to the [IEEE Registration Authority](https://standards.ieee.org/products-programs/regauth/) and the [Nmap Project](https://nmap.org/). Lantern does not bundle or execute the Nmap scanner.
 
@@ -23,4 +24,3 @@ Other transitive dependencies use permissive licenses including MIT, Apache-2.0,
 OpenSSH is not bundled with Lantern. When you connect, Lantern launches the OpenSSH client installed by your operating system; that separate program remains governed by its own license.
 
 Lantern's own source is licensed under the MIT License. See `LICENSE`.
-

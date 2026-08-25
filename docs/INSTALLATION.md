@@ -8,7 +8,7 @@
 
 Lantern uses the Windows OpenSSH Client. In PowerShell, `ssh -V` should print a version. If it is missing, open **Settings → System → Optional features → View features**, search for **OpenSSH Client**, and install it.
 
-## macOS
+## macOS 10.15 or newer
 
 1. Choose the Apple silicon or Intel `.dmg` from the [latest release](https://github.com/kevin-rahhal/lantern/releases/latest).
 2. Open the disk image and drag Lantern to **Applications**.
@@ -34,4 +34,3 @@ Each release includes checksums. Compare the SHA-256 value for your downloaded f
 - **Linux:** delete the AppImage, or remove the installed Debian package using your package manager.
 
 Lantern keeps profiles and personal device names in your per-user application-data folder and passwords in the OS credential vault. Uninstallers may intentionally leave this user data in place. Remove it manually only if you no longer need it.
-

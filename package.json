@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.8.0",
+    "esbuild": "^0.28.2",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
   }
