@@ -20,9 +20,9 @@ No development tools are needed. Download, open, and follow the installer:
 
 | Your computer | Recommended download |
 | --- | --- |
-| Windows 10/11 (64-bit) | **[Download the Windows installer](https://github.com/kevin-rahhal/lantern/releases/latest/download/Lantern_0.1.0_x64-setup.exe)** |
-| macOS, Apple silicon | [Download the Apple silicon DMG](https://github.com/kevin-rahhal/lantern/releases/latest/download/Lantern_0.1.0_aarch64.dmg) |
-| macOS, Intel | [Download the Intel DMG](https://github.com/kevin-rahhal/lantern/releases/latest/download/Lantern_0.1.0_x64.dmg) |
+| Windows 10/11 (64-bit) | **[Download the Windows installer](https://github.com/kevin-rahhal/lantern/releases/latest/download/Lantern_0.1.1_x64-setup.exe)** |
+| macOS, Apple silicon | [Download the Apple silicon DMG](https://github.com/kevin-rahhal/lantern/releases/latest/download/Lantern_0.1.1_aarch64.dmg) |
+| macOS, Intel | [Download the Intel DMG](https://github.com/kevin-rahhal/lantern/releases/latest/download/Lantern_0.1.1_x64.dmg) |
 | Linux | [Choose an AppImage or Debian package](https://github.com/kevin-rahhal/lantern/releases/latest) |
 
 See the [installation guide](docs/INSTALLATION.md) if your operating system shows a security prompt or if SSH is not installed yet.

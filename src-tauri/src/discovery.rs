@@ -1,7 +1,6 @@
 use std::{
     collections::{HashMap, HashSet},
     net::{IpAddr, Ipv4Addr, SocketAddr},
-    process::Command,
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
 
@@ -18,7 +17,10 @@ use tokio::{
     time::timeout,
 };
 
-use crate::models::{Device, NetworkInterface, ProfileStatus, ScanEvent, SshProfile};
+use crate::{
+    background_process,
+    models::{Device, NetworkInterface, ProfileStatus, ScanEvent, SshProfile},
+};
 
 const COMMON_PORTS: &[u16] = &[
     22, 53, 80, 139, 443, 445, 554, 1883, 3389, 5353, 5900, 8008, 8080, 8123, 9100,
@@ -429,7 +431,10 @@ fn read_neighbor_table() -> HashMap<Ipv4Addr, String> {
 }
 
 fn run_command(program: &str, args: &[&str]) -> Option<String> {
-    let output = Command::new(program).args(args).output().ok()?;
+    let output = background_process::command(program)
+        .args(args)
+        .output()
+        .ok()?;
     output
         .status
         .success()

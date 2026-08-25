@@ -1,3 +1,4 @@
+mod background_process;
 mod credentials;
 mod discovery;
 mod models;

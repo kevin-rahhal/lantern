@@ -2,6 +2,14 @@
 
 All notable changes to Lantern are documented here. The project follows [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+## [0.1.1] - 2026-08-25
+
+### Fixed
+
+- Prevent background network-discovery and SSH checks from flashing console windows on Windows.
+
 ## [0.1.0] - 2026-08-24
 
 ### Added
@@ -14,5 +22,7 @@ All notable changes to Lantern are documented here. The project follows [Semanti
 - Compact tabbed terminals, multiple sessions to the same host, and collapsible navigation.
 - Cross-platform release automation and native installers.
 
+[Unreleased]: https://github.com/kevin-rahhal/lantern/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/kevin-rahhal/lantern/releases/tag/v0.1.1
 [0.1.0]: https://github.com/kevin-rahhal/lantern/releases/tag/v0.1.0
 

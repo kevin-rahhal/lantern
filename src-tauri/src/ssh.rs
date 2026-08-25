@@ -3,7 +3,6 @@ use std::{
     ffi::OsString,
     io::{Read, Write},
     path::PathBuf,
-    process::Command,
     sync::{Arc, Mutex},
     thread,
 };
@@ -13,7 +12,7 @@ use tauri::ipc::Channel;
 use uuid::Uuid;
 
 use crate::{
-    credentials,
+    background_process, credentials,
     models::{SshProfile, TerminalEvent},
     profiles,
 };
@@ -225,7 +224,7 @@ fn expand_home(path: &str) -> OsString {
 }
 
 pub fn available() -> bool {
-    Command::new("ssh")
+    background_process::command("ssh")
         .arg("-V")
         .output()
         .map(|output| output.status.success())
