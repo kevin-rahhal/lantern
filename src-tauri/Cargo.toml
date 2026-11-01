@@ -18,12 +18,12 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-dns-lookup = "2.0"
+dns-lookup = "4.0"
 futures = "0.3"
 if-addrs = "0.15"
 ipnet = "2.11"
 keyring = "4.1.6"
-macaddr-ouidb = "0.1.6"
+macaddr-ouidb = "0.3.0"
 mdns-sd = "0.21.0"
 portable-pty = "0.9"
 regex = "1.11"
